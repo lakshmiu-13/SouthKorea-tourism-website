@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            background-color: #1a1a1a; /* Dark background for contrast */
+            color: #ffffff; /* White text for readability */
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful font */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1); /* Light transparent background */
+            padding: 30px;
+            border-radius: 20px; /* More rounded corners */
+            width: 400px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 28px; /* Slightly larger font size */
+            color: #ffcc00; /* Soft yellow color */
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #ffcc00; /* Soft yellow color for labels */
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 2px solid #ffcc00; /* Yellow border for inputs */
+            border-radius: 10px; /* Rounded corners */
+            background-color: rgba(255, 255, 255, 0.2); /* Light transparent background */
+            color: white;
+            font-size: 14px;
+            transition: border 0.3s; /* Transition for border change */
+        }
+
+        input:focus, textarea:focus {
+            border-color: #66bb6a; /* Green border on focus */
+            outline: none; /* Remove outline */
+            background-color: rgba(255, 255, 255, 0.3); /* Darker background on focus */
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 10px; /* Rounded corners */
+            background-color: #ffcc00; /* Yellow background */
+            color: black; /* Black text */
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s; /* Transitions for hover effects */
+        }
+
+        button:hover {
+            background-color: #ffbb00; /* Slightly darker yellow on hover */
+            transform: translateY(-3px); /* Lift effect on hover */
+        }
+
+        #formFeedback {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        /* Cute icon styles */
+        .icon {
+            width: 60px; /* Width for the icon */
+            margin: 0 auto 15px; /* Centering the icon */
+        }
+
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://th.bing.com/th/id/OIP.VQexyTCDO4cL1rMCkaAZ7wAAAA?rs=1&pid=ImgDetMain" alt="Cute Icon" class="icon"> <!-- Replace with your cute icon URL -->
+        <h1>Contact Us</h1>
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+            <p id="formFeedback"></p>
+        </form>
+    </div>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const feedback = document.getElementById('formFeedback');
+
+            if (name && email && message) {
+                feedback.textContent = 'Thank you for your message, ' + name + '!';
+                feedback.style.color = 'lightgreen';
+            } else {
+                feedback.textContent = 'Please fill out all fields.';
+                feedback.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>

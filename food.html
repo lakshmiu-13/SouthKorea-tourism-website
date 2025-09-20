@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Korean Food Slideshow</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            margin: 0;
+        }
+        h1 {
+            font-size: 36px; /* Size of the header */
+            color: white; /* White text color */
+            background-color: black; /* Black background */
+            text-align: center; /* Center align the text */
+            width: 100%; /* Full width for the header */
+            padding: 20px 0; /* Padding for better spacing */
+            position: absolute; /* Position header at the top */
+            top: 0; /* Align to top */
+            z-index: 10; /* Keep it above other elements */
+        }
+        .slideshow-container {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            font-size: 20px;
+            text-align: center;
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform: translateX(-20px); /* Start slightly left */
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0); /* Move to center */
+            z-index: 1;
+        }
+        .slide-content {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Explore the Flavors of South Korea</h1>
+    <div class="slideshow-container">
+        <!-- Slide 1 -->
+        <div class="slide active" style="background-image: url('https://www.thespruceeats.com/thmb/4Dp-1foTVieumGmhq5f8NJyeESw=/3714x2476/filters:fill(auto,1)/classic-korean-bibimbap-recipe-2118765-hero-01-091c0e0f8c20426d8f70747955efa61d.jpg');">
+            <div class="slide-content">
+                <h2>Bibimbap</h2>
+                <p>A mixed rice dish topped with vegetables, meat, and egg, usually served with a dollop of gochujang (red chili paste).</p>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide" style="background-image: url('https://kelliesfoodtoglow.com/wp-content/uploads/2016/10/kimchi1.jpg');">
+            <div class="slide-content">
+                <h2>Kimchi</h2>
+                <p>Fermented cabbage with a spicy, tangy flavor, often served as a side dish.</p>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide" style="background-image: url('https://th.bing.com/th/id/R.039f184790398a785f0f7dea446a3759?rik=ZsM0qE4FBaxAdA&riu=http%3a%2f%2fimages.deliveryhero.io%2fimage%2ffoodpanda%2frecipes%2ftteokbokki-recipe-1.jpg&ehk=zLyzTCNECwIzFcGuOjzcb9hlR05%2b%2fiOEAOJYhUcpKEo%3d&risl=&pid=ImgRaw&r=0');">
+            <div class="slide-content">
+                <h2>Tteokbokki</h2>
+                <p>Spicy rice cakes cooked in a gochujang-based sauce, often with fish cakes.</p>
+            </div>
+        </div>
+
+        <!-- Add more slides here -->
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            // Hide all slides and remove active class
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+            });
+
+            // Show the current slide by adding the active class
+            slides[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Show the first slide initially
+        showSlide(currentSlide);
+
+        // Change slide every 3 seconds
+        setInterval(nextSlide, 3000);
+    </script>
+</body>
+</html>

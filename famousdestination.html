@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #000; /* Set default background to black */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            color: white;
+        }
+        h1 { 
+            font-family: cursive; 
+            color: #FFFFFF;
+            margin-top: 20px;
+            text-shadow: 2px 2px 8px #4682B4;
+        }
+        select, button {
+            display: block;
+            background-color: #ADD8E6;
+            color: black;
+            border: none;
+            padding: 10px;
+            border-radius: 100px;
+            margin: 10px 0;
+            font-size: 16px;
+            width: 300px;
+        }
+        button {
+            background-color: #4682B4;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5F9EA0;
+        }
+        .info-box {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Solid black with transparency */
+            border-radius: 20px;
+            color: white;
+            width: 80%;
+            max-width: 500px;
+            margin: 20px auto;
+            text-align: left;
+            min-height: 200px;
+            display: none; /* Hide initially */
+        }
+        .info-box h2, .info-box p {
+            padding: 10px;
+            border-radius: 10px;
+            text-shadow: 1px 1px 5px #FFFFFF; /* Shiny text effect */
+        }
+        #res {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background-blend-mode: overlay;
+            background-color: rgba(255, 255, 255, 0.1); /* Shiny overlay effect */
+            background-image: linear-gradient(135deg, #ffb6c1, #ffa07a); /* Gradient for a shiny effect */
+        }
+    </style>
+</head>
+<body>
+    <h1>Famous Destinations in Korea</h1>
+    
+    <label for="destination">Choose a destination:</label>
+    <select id="destination">
+        <option value="seoul">Seoul</option>
+        <option value="jeju">Jeju Island</option>
+        <option value="busan">Busan</option>
+        <option value="gyeongju">Gyeongju</option>
+        <option value="dmz">DMZ (Demilitarized Zone)</option>
+    </select>
+    
+    <button type="button" onclick="displayDestinationInfo()">Show Information</button>
+    
+    <div id="res" class="info-box"></div>
+    
+    <script>
+        function displayDestinationInfo() {
+            const resDiv = document.getElementById("res");
+            const destination = document.getElementById("destination").value;
+            
+            let info = "";
+            let backgroundImage = "";
+
+            switch (destination) {
+                case "seoul":
+                    info = "<h2>Seoul</h2><p>Seoul, the capital of South Korea, is known for its modern skyscrapers, high-tech subways, and pop culture. Key attractions include Gyeongbokgung Palace, N Seoul Tower, and the bustling Myeongdong district.</p>";
+                    backgroundImage = "url('https://wallpaperboat.com/wp-content/uploads/2020/04/seoul-wallpaper-download.jpg')";
+                    break;
+                case "jeju":
+                    info = "<h2>Jeju Island</h2><p>Jeju Island is known for its stunning beaches, volcanic landscapes, and scenic hiking trails. Highlights include Seongsan Ilchulbong (Sunrise Peak) and Hallasan Mountain.</p>";
+                    backgroundImage = "url('https://blog.airpaz.com/wp-content/uploads/2017/08/11263d-jeju-island-top-resolution.jpg')";
+                    break;
+                case "busan":
+                    info = "<h2>Busan</h2><p>Busan is famous for its beaches, seafood markets, and Haeundae Beach. The city also features the colorful Gamcheon Culture Village on a hillside.</p>";
+                    backgroundImage = "url('https://media.timeout.com/images/105260247/image.jpg')";
+                    break;
+                case "gyeongju":
+                    info = "<h2>Gyeongju</h2><p>Known as the ‘Museum Without Walls’, Gyeongju is rich in cultural heritage with ancient temples, tombs, and ruins from the Silla dynasty, such as Bulguksa Temple.</p>";
+                    backgroundImage = "url('https://external-preview.redd.it/N6E4kLLN0-ySk2VqY7Jj80RtwRM4xzoqnYIpXRDR3uE.jpg?auto=webp&s=7a93d9da2fe3b4f38434e9388d7e640523d70c4a')";
+                    break;
+                case "dmz":
+                    info = "<h2>DMZ (Demilitarized Zone)</h2><p>The DMZ is a buffer zone between North and South Korea. Highlights include the Joint Security Area (JSA), which provides a glimpse into the history and tension on the peninsula.</p>";
+                    backgroundImage = "url('https://th.bing.com/th/id/OIP.NdGGyekhPmVJNHqLlLEd-gAAAA?rs=1&pid=ImgDetMain')";
+                    break;
+                default:
+                    info = "<p>Please select a destination to see more details.</p>";
+            }
+
+            resDiv.innerHTML = info;
+            resDiv.style.backgroundImage = backgroundImage;
+            resDiv.style.display = "block"; // Show the info box with the image on click
+        }
+    </script>
+</body>
+</html>
